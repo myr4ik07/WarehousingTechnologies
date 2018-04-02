@@ -4,4 +4,8 @@
     <string name="b_settings">Налаштування</string>
     <string name="saveSetting">зберегти</string>
     <string name="url">Адрес сервера</string>
+    <string name="title_activity_menu">Menu</string>
+    <string name="b_acceptance">Приемка</string>
+    <string name="b_selection">отбор</string>
+    <string name="b_shipment">отгрузка</string>
 </resources>

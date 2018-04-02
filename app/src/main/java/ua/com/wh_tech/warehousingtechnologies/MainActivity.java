@@ -26,7 +26,7 @@ import java.util.ArrayList;
 public class MainActivity extends AppCompatActivity {
 
     String urlAddress;
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void In(View view) {
-
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
     }
 
     public void preferences(View view) {
