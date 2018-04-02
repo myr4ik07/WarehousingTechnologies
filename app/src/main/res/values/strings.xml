@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Warehousing Technologies</string>
+    <string name="b_in">Вхід</string>
+    <string name="b_settings">Налаштування</string>
+    <string name="saveSetting">зберегти</string>
+    <string name="url">Адрес сервера</string>
+</resources>
