@@ -84,7 +84,7 @@ public class DocAcceptanceActivity extends AppCompatActivity {
                 JSONArray mJsonArray = new JSONArray(sb.toString());
                 for (int x = 0; x < mJsonArray.length(); x++) {
                     JSONObject jsonObject = mJsonArray.getJSONObject(x);
-                    arrayList.add("Дата "+jsonObject.getString("dateDoc")+ "/ Номер "+jsonObject.getString("numberDoc"));
+                    arrayList.add("№ "+jsonObject.getString("numberDoc") +" от "+jsonObject.getString("dateDoc"));
                 }
 
                 br.close();

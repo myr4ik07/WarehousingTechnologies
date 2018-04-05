@@ -56,8 +56,14 @@ public class MenuActivity extends AppCompatActivity {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(MenuActivity.this, android.R.layout.simple_spinner_item, arrayList);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-            Button button = (Button) findViewById(R.id.b_acceptance);
-            button.setText("Приемка " + "("+arrayList.size()+")");
+            Button b_acceptance = (Button) findViewById(R.id.b_acceptance);
+            b_acceptance.setText(getResources().getString(R.string.b_acceptance) + " ("+arrayList.size()+")");
+
+            Button b_selection = (Button) findViewById(R.id.b_selection);
+            b_selection.setText(getResources().getString(R.string.b_selection) + " ("+(0)+")");
+
+            Button b_shipment = (Button) findViewById(R.id.b_shipment);
+            b_shipment.setText(getResources().getString(R.string.b_shipment) + " ("+(0)+")");
 
         }
 
