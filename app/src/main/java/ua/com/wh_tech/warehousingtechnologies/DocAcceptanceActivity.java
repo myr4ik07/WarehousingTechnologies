@@ -2,16 +2,13 @@ package ua.com.wh_tech.warehousingtechnologies;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.ListView;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -22,21 +19,19 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class DocAcceptanceActivity extends AppCompatActivity {
 
     String urlAddress;
-    String pathAddress = "/employees/get/all";
+    String pathAddress = "/docacceptance/get/all";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setContentView(R.layout.activity_doc_acceptance);
 
         urlAddress = geturlAddress();
         GetUserList getUserList = new GetUserList();
         getUserList.execute(urlAddress+pathAddress);
-
     }
 
     private String geturlAddress() {
@@ -47,41 +42,19 @@ public class MainActivity extends AppCompatActivity {
         return url_address;
     }
 
-    public void In(View view) {
-        Intent intent = new Intent(this, MenuActivity.class);
-        startActivity(intent);
-    }
-
-    public void preferences(View view) {
-        Intent intent = new Intent(this, Preferences.class);
-        startActivity(intent);
-    }
-
     private class GetUserList extends AsyncTask<String, String, String> {
 
-        public ArrayList userList = new ArrayList<>();
+        public ArrayList arrayList = new ArrayList<>();
 
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this, android.R.layout.simple_spinner_item, userList);
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(DocAcceptanceActivity.this, android.R.layout.select_dialog_item, arrayList);
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-            Spinner spinner = (Spinner) findViewById(R.id.usr_list);
-            spinner.setAdapter(adapter);
-
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> arg0) {
-                }
-
-            });
+            ListView listView = (ListView) findViewById(R.id.list_doc);
+            listView.setAdapter(adapter);
 
         }
 
@@ -111,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 JSONArray mJsonArray = new JSONArray(sb.toString());
                 for (int x = 0; x < mJsonArray.length(); x++) {
                     JSONObject jsonObject = mJsonArray.getJSONObject(x);
-                    userList.add(jsonObject.getString("login"));
+                    arrayList.add("Дата "+jsonObject.getString("dateDoc")+ "/ Номер "+jsonObject.getString("numberDoc"));
                 }
 
                 br.close();
@@ -125,6 +98,11 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+    }
+
+    public void rowClick(View view) {
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
     }
 
 }

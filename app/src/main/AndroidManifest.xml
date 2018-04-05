@@ -3,7 +3,6 @@
     package="ua.com.wh_tech.warehousingtechnologies">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -20,7 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".Preferences" />
-        <activity android:name=".MenuActivity"></activity>
+        <activity android:name=".MenuActivity" />
+        <activity android:name=".DocAcceptanceActivity" />
+        <activity android:name=".NewDocAcceptanceActivity"></activity>
     </application>
 
 </manifest>

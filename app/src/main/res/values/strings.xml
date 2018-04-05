@@ -8,4 +8,5 @@
     <string name="b_acceptance">Приемка</string>
     <string name="b_selection">отбор</string>
     <string name="b_shipment">отгрузка</string>
+    <string name="add_doc">+</string>
 </resources>
